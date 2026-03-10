@@ -43,3 +43,8 @@ __pycache__/
 .DS_Store
 Thumbs.db
 Build_GT_FPOC.py
+segment_tackles.py
+segment_tacklesV2.py
+segment_tackles_B1.py
+segment_tackles_B2.py
+segment_tackles_B3.py
