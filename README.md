@@ -136,7 +136,7 @@ The dataset contains 738 annotated football practice tackle clips with FPOC grou
 ```bibtex
 @inproceedings{zaidi2026graze,
   title     = {Grounded Refinement and Motion-Aware Zero-Shot Event Localization},
-  author    = {Zaidi, Ahsan and Hsu, William and Dietrich, Scott},
+  author    = {Zaidi, Ahsan and Shamir, Lior and Hsu, William and Dietrich, Scott and Zaidi, Talha},
   booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVSports)},
   year      = {2026}
 }
