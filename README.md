@@ -11,43 +11,27 @@ GRAZE is a **training-free** pipeline for **First Point of Contact (FPOC) detect
 ---
 
 ## Method
-```
-Input Video
-    │
-    ▼
-GroundingDINO ──► Player bounding boxes (text-prompted, per frame)
-    │
-    ▼
-SAM2 ──────────► Segmentation masks propagated across clip
-    │
-    ▼
-Multi-Prompt Temporal Search ──► Candidate contact window
-    │
-    ▼
-Motion Analysis + Backward Refinement ──► FPOC frame prediction
-```
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2c6192b9-a354-46c9-bba2-80f5f000ea5e" width="900"/>
+  <br>
+  <em>GRAZE pipeline: text-prompted grounding → SAM2 segmentation → multi-prompt temporal search → motion-aware backward refinement → FPOC prediction</em>
+</p>
 
 ---
 
 ## Repository Structure
+
 ```
 GRAZE/
-├── segment_tacklesV3.py       # ★ Final GRAZE pipeline (matches paper results)
-├── segment_tackles.py         # Base version
-├── segment_tacklesV2.py       # Intermediate version
-├── segment_tackles_B1.py      # Ablation B1: no multi-prompt temporal search
-├── segment_tackles_B2.py      # Ablation B2: no temporal validation
-├── segment_tackles_B3.py      # Ablation B3: no motion-aware refinement
+├── segment_tacklesV3.py       # ★ GRAZE pipeline (full method, matches paper results)
 ├── CombineXls.py              # Aggregates per-video predictions to Excel
 ├── verify_setup.py            # Checks weights and environment
 ├── setupenv.sh                # Conda environment setup
 ├── submit.sh                  # SLURM single-job submission
-├── submit_B1.sh               # SLURM submission for B1 baseline
 ├── run_array.sh               # SLURM array job (one job per video)
-├── run_array_B1.sh            # SLURM array job for B1 baseline
 ├── configs/                   # SAM2 model configuration files
 │   └── sam2.1/
-├── Build_GT_FPOC              # Ground truth FPOC annotation script
 └── requirements.txt
 ```
 
@@ -123,27 +107,18 @@ sbatch run_array.sh
 
 ---
 
-## Ablation Baselines
+## Qualitative Results
 
-| Script | Removes |
-|--------|---------|
-| `segment_tackles_B1.py` | Multi-prompt temporal search |
-| `segment_tackles_B2.py` | Temporal validation |
-| `segment_tackles_B3.py` | Motion-aware backward refinement |
-| `segment_tacklesV3.py`  | Nothing — full GRAZE method |
-```bash
-python segment_tackles_B1.py \
-  --video_path /path/to/clip.mp4 \
-  --output_dir ./Results_B1 \
-  --weights_dir ./weights
-
-# SLURM version
-sbatch run_array_B1.sh
-```
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/82a8fc38-d37b-47fa-9578-acfe14614130" width="900"/>
+  <br>
+  <em>FPOC detection examples: GRAZE correctly localizes the first point of contact frame across diverse tackle scenarios in practice footage</em>
+</p>
 
 ---
 
 ## Aggregating Results
+
 ```bash
 python CombineXls.py --results_dir ./Results --output graze_results.xlsx
 ```
@@ -157,6 +132,7 @@ The dataset contains 738 annotated football practice tackle clips with FPOC grou
 ---
 
 ## Citation
+
 ```bibtex
 @inproceedings{zaidi2026graze,
   title     = {Grounded Refinement and Motion-Aware Zero-Shot Event Localization},
