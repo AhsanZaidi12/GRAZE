@@ -1,0 +1,44 @@
+# Result directories
+Results/
+Results1/
+Results_B1/
+Results_v3_mp4/
+ResultsB1_mp4/
+ResultsB2_mp4/
+ResultsB3_mp4/
+ResultsV2/
+
+# Model weights
+weights/
+*.pth
+*.pt
+*.ckpt
+*.bin
+*.safetensors
+
+# Logs
+logs/
+slurm-*.out
+*.log
+
+# Media
+*.mp4
+*.avi
+*.mov
+
+# Data
+*.xlsx
+*.csv
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment
+.env
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
