@@ -4,7 +4,7 @@
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Official implementation of **GRAZE**, accepted at **CVSports Workshop @ CVPR 2026**.
+Official implementation of **GRAZE**, accepted at **CVSports @ CVPR 2026**.
 
 GRAZE is a **training-free** pipeline for **First Point of Contact (FPOC) detection** in American football tackle videos. It combines open-vocabulary grounding (GroundingDINO), promptable segmentation (SAM2), and motion-aware temporal reasoning — no task-specific training required.
 
