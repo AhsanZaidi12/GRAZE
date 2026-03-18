@@ -96,7 +96,7 @@ python segment_tacklesV3.py \
   --weights_dir ./weights
 ```
 
-### Batch inference — SLURM (HPC)
+### Batch inference, SLURM (HPC)
 ```bash
 # Edit submit.sh: set your video directory and SLURM allocation
 sbatch submit.sh
