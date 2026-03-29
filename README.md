@@ -1,10 +1,10 @@
 # GRAZE: Grounded Refinement and Motion-Aware Zero-Shot Event Localization
 
-[![CVSports 2026](https://img.shields.io/badge/CVSports-CVPR%202026-blue)]()
+[![CVSports 2026](https://img.shields.io/badge/CVSports-CVPR%202026-blue)](https://vap.aau.dk/cvsports/)
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Official implementation of **GRAZE**, **CVSports @ CVPR 2026**.
+Official implementation of **GRAZE**, accepted at **CVSports @ CVPR 2026**.
 
 GRAZE is a **training-free** pipeline for **First Point of Contact (FPOC) detection** in American football tackle videos. It combines open-vocabulary grounding (GroundingDINO), promptable segmentation (SAM2), and motion-aware temporal reasoning — no task-specific training required.
 
@@ -40,12 +40,14 @@ GRAZE/
 ## Installation
 
 ### 1. Clone
+
 ```bash
 git clone https://github.com/AhsanZaidi12/GRAZE.git
 cd GRAZE
 ```
 
 ### 2. Create environment
+
 ```bash
 bash setupenv.sh
 # OR manually:
@@ -56,16 +58,19 @@ pip install -r requirements.txt
 ```
 
 ### 3. Install GroundingDINO
+
 ```bash
 pip install git+https://github.com/IDEA-Research/GroundingDINO.git
 ```
 
 ### 4. Install SAM2
+
 ```bash
 pip install git+https://github.com/facebookresearch/segment-anything-2.git
 ```
 
 ### 5. Download weights
+
 ```bash
 mkdir -p weights
 
@@ -78,6 +83,7 @@ wget -P weights/ https://dl.fbaipublicfiles.com/segment_anything_2/sam2_hiera_la
 ```
 
 ### 6. Verify
+
 ```bash
 python verify_setup.py
 ```
@@ -87,6 +93,7 @@ python verify_setup.py
 ## Usage
 
 ### Single video
+
 ```bash
 conda activate graze
 
@@ -97,11 +104,18 @@ python segment_tacklesV3.py \
 ```
 
 ### Batch inference, SLURM (HPC)
-```bash
-# Edit submit.sh: set your video directory and SLURM allocation
-sbatch submit.sh
 
-# Large-scale array job (used for 738 clips in paper)
+```bash
+# Set your paths as environment variables before submitting
+export VIDEO_DIR="/path/to/your/videos"
+export OUTPUT_DIR="/path/to/your/results"
+export GRAZE_DIR="/path/to/GRAZE"
+export CONDA_ENV="graze"
+
+# Submit array job + auto merge
+bash submit.sh
+
+# Or submit array job only (used for 738 clips in paper)
 sbatch run_array.sh
 ```
 
